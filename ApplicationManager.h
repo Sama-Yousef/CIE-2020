@@ -44,4 +44,6 @@ public:
 	~ApplicationManager();
 };
 
+
+//this is a comment
 #endif
