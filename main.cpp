@@ -23,7 +23,7 @@ int main()
 		//Update the drawing window
 		AppManager.UpdateInterface();
 	
-
+		//This is a comment
 	}while(ActType != EXIT);
 		
 	return 0;

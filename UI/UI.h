@@ -38,8 +38,9 @@ class UI
 	{
 		//Note: Items are ordered here as they appear in the menu
 		//If you want to change the menu items order, just change the order here
-		ITM_RES,		//Resistor item in menu
-	
+		ITM_RES,	//Resistor item in menu
+		ITM_BAT,
+		ITM_SWI,
 		ITM_EXIT,		//Exit item
 		//TODO: Add more items names here
 	
@@ -110,6 +111,8 @@ public:
 		
 	// Draws a resistor
 	void DrawResistor(const GraphicsInfo &r_GfxInfo, bool selected = false) const;
+	void DrawBattery(const GraphicsInfo& r_GfxInfo, bool selected = false) const;
+	void DrawSwitch(const GraphicsInfo& r_GfxInfo, bool selected = false) const;
 
 	///TODO: Make similar functions for drawing all other components, connections, .. etc
 

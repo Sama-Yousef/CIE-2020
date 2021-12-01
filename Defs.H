@@ -10,7 +10,7 @@ enum ActionType
 	ADD_SWITCH,			//Add Switch
 	ADD_LAMP,			//Add LAMP
 	ADD_CONNECTION,		//Add Wire Connection
-
+	ADD_BATTERY,
 	ADD_Label,			//Add Label to a Component, a Connection
 	EDIT_Label,			//Edit Label of a Component, a Connection
 

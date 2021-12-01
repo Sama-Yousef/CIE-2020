@@ -98,7 +98,9 @@ ActionType UI::GetUserAction() const
 			switch (ClickedItemOrder)
 			{
 			case ITM_RES:	return ADD_RESISTOR;
-			case ITM_EXIT:	return EXIT;	
+			case ITM_EXIT:	return EXIT;
+			case ITM_BAT:   return ADD_BATTERY;
+			case ITM_SWI:   return ADD_SWITCH;
 			
 			default: return DSN_TOOL;	//A click on empty place in desgin toolbar
 			}
@@ -182,6 +184,8 @@ void UI::CreateDesignToolBar()
 	//First prepare List of images for each menu item
 	string MenuItemImages[ITM_DSN_CNT];
 	MenuItemImages[ITM_RES] = "images\\Menu\\Menu_Resistor.jpg";
+	MenuItemImages[ITM_BAT] = "images\\Menu\\Menu_Battery.jpg";
+	MenuItemImages[ITM_SWI] = "images\\Menu\\Menu_Switch.jpg";
 	MenuItemImages[ITM_EXIT] = "images\\Menu\\Menu_Exit.jpg";
 
 	//TODO: Prepare image for each menu item and add it to the list
@@ -223,14 +227,46 @@ void UI::DrawResistor(const GraphicsInfo &r_GfxInfo, bool selected) const
 	pWind->DrawImage(ResImage, r_GfxInfo.PointsList[0].x, r_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
 }
 
-//TODO: Add similar functions to draw all other components
+void UI::DrawBattery(const GraphicsInfo& r_GfxInfo, bool selected) const
+{
+	string BatImage;
+	if (selected)
+		BatImage = "Images\\Comp\\Battery_HI.jpg";	//use image of highlighted battery
+	else
+		BatImage = "Images\\Comp\\Battery.jpg";	//use image of the normal battery
 
+	//Draw battery at Gfx_Info (1st corner)
+	pWind->DrawImage(BatImage, r_GfxInfo.PointsList[0].x, r_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
+}
+//TODO: Add similar functions to draw all other components
+void UI::DrawSwitch(const GraphicsInfo& r_GfxInfo, bool selected) const
+{
+	string SwiImage;
+	if (selected)
+			SwiImage = "Images\\Comp\\Switch_HI.jpg";	//use image of highlighted switch
+		else
+			SwiImage = "Images\\Comp\\Switch.jpeg";	//use image of the normal switch
+	//Draw switch at Gfx_Info (1st corner)        // Draw the image of the switch after adding the width and the height
+	pWind->DrawImage(SwiImage, r_GfxInfo.PointsList[0].x, r_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
+}
 
 
 
 void UI::DrawConnection(const GraphicsInfo &r_GfxInfo, bool selected) const
 {
-	//TODO: Add code to draw connection
+	if (selected == true)
+		//if (AppMode == DESIGN)	//application is in design mode
+	{
+		//if (r_GfxInfo.PointsList[0].y > ToolBarHeight && r_GfxInfo.PointsList[0].y < height - StatusBarHeight && r_GfxInfo.PointsList[1].y > ToolBarHeight && r_GfxInfo.PointsList[1].y < height - StatusBarHeight)
+		pWind->SetPen(PINK, 3);
+		pWind->DrawLine(r_GfxInfo.PointsList[0].x, r_GfxInfo.PointsList[0].y, r_GfxInfo.PointsList[1].x, r_GfxInfo.PointsList[1].y);
+	}
+	else
+	{
+		pWind->SetPen(BLACK, 3);
+		pWind->DrawLine(r_GfxInfo.PointsList[0].x, r_GfxInfo.PointsList[0].y, r_GfxInfo.PointsList[1].x, r_GfxInfo.PointsList[1].y);
+	}
+
 }
 
 
