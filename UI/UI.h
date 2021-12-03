@@ -119,6 +119,9 @@ public:
 	// Draws Connection
 	void DrawConnection(const GraphicsInfo &r_GfxInfo, bool selected = false) const;
 	
+	// Draws a Bulb
+	void DrawBulb(const GraphicsInfo &r_GfxInfo, bool selected = false) const;
+	
 	void PrintMsg(string msg) const;	//Print a message on Status bar
 
 	~UI();
