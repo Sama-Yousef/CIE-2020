@@ -269,6 +269,18 @@ void UI::DrawConnection(const GraphicsInfo &r_GfxInfo, bool selected) const
 
 }
 
+void UI::DrawBulb(const GraphicsInfo &r_GfxInfo, bool selected) const
+{
+	string ResImage;
+	if(selected)	
+		ResImage ="Images\\Comp\\Bulb_HI.jpg";	//use image of highlighted bulb
+	else  
+		ResImage = "Images\\Comp\\Bulb.png";	//use image of the normal bulb
+
+	//Draw bulb at Gfx_Info (1st corner)
+	pWind->DrawImage(ResImage, r_GfxInfo.PointsList[0].x, r_GfxInfo.PointsList[0].y, COMP_WIDTH, COMP_HEIGHT);
+}
+
 
 UI::~UI()
 {
