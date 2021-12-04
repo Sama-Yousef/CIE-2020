@@ -43,9 +43,12 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = new ActionAddBat(this);
 			break;
 	
-
+		case ADD_LAMP:
+			pAct= new ActionAddBulb(this);
+			break;	
+		
 		case EXIT:
-			///TODO: create ExitAction here
+			pAct= new ActionExit(this);
 			break;
 	}
 	if(pAct)
