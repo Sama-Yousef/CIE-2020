@@ -66,6 +66,15 @@ void ApplicationManager::UpdateInterface()
 			CompList[i]->Draw(pUI);
 
 }
+////////////////////////////////////////////////////////////////////
+
+void ApplicationManager::load(string* labeli, double* valueI, Component** comp001, Component** comp002) //load the circuit  
+{
+	for (int i = 0; i < CompCount; i++)
+		CompList[i]->load(i + 1, labeli[i], valueI[i]);    // load the components 
+	for (int i = 0; i < ConnCount; i++)
+		ConnList[i]->load(comp001[i], comp002[i]);         // load the connections 
+}
 
 ////////////////////////////////////////////////////////////////////
 UI* ApplicationManager::GetUI()

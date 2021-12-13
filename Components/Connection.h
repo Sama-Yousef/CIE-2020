@@ -14,5 +14,8 @@ public:
 
 	virtual void Draw(UI* );	//for connection to Draw itself
 	
+	virtual void load(Component*, Component*);  //load connection
+	void EditConnection(Component* component1, Component* component2, GraphicsInfo* pGInfo, UI*); //edit the connection
 
+	~Connection();
 };

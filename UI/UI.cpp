@@ -86,9 +86,8 @@ ActionType UI::GetUserAction() const
 
 	if(AppMode == DESIGN )	//application is in design mode
 	{
-		//[1] If user clicks on the Toolbar
-		if ( y >= 0 && y < ToolBarHeight)
-		{	
+		if (y >= 0 && y < ToolBarHeight && v == 1)
+		{
 			//Check whick Menu item was clicked
 			//==> This assumes that menu items are lined up horizontally <==
 			int ClickedItemOrder = (x / ToolItemWidth);
@@ -98,22 +97,72 @@ ActionType UI::GetUserAction() const
 			switch (ClickedItemOrder)
 			{
 			case ITM_RES:	return ADD_RESISTOR;
-			case ITM_EXIT:	return EXIT;
+			case ITM_BULB:	return ADD_BULB;
+			case ITM_SWI:	return ADD_SWITCH;
 			case ITM_BAT:   return ADD_BATTERY;
-			case ITM_SWI:   return ADD_SWITCH;
-			
+			case ITM_GRO:   return ADD_GROUND;
+			case ITM_BUZ:   return ADD_BUZZER;
+			case ITM_FUE:   return ADD_FUES;
+			case ITM_CON:   return ADD_CONNECTION;
+			case ITM_SIM:	return SIM_MODE;
+			case ITM_LABEL: return ADD_Label;
+			case ITM_LOAD:	return LOAD;
+			case ITM_MOD:	return ADD_MOD;
+			case ITM_MODU:	return MOD_MODE;
+			case ITM_EXIT:	return EXIT;
+
 			default: return DSN_TOOL;	//A click on empty place in desgin toolbar
 			}
 		}
-	
+
 		//[2] User clicks on the drawing area
-		if ( y >= ToolBarHeight && y < height - StatusBarHeight)
+		if (y >= ToolBarHeight && y < height - StatusBarHeight)
 		{
-			return SELECT;	//user want to select/unselect a statement in the flowchart
+			if (v == 2)
+				DrawActionBar();
+			else
+			{
+				if (x < 25 && y<getHeight() - getStatusBarHeight() && y > getHeight() - getStatusBarHeight() - 40)
+				{
+					return ADD_REALISTIC;
+				}
+				return SELECT; //user wants to select/unselect a component
+			}
+
 		}
-		
+
+		if (y >= ToolBarHeight && y < height - StatusBarHeight)
+		{
+
+			int x1, y1;
+			PrintMsg("Click on action to execute");
+			pWind->WaitMouseClick(x1, y1);
+
+			pWind->SetPen(WHITE);
+			pWind->DrawRectangle(1135, 80, 1200, 600, FILLED);
+			ClearStatusBar();
+			int ClickedItemOrder = (y1 - ToolBarHeight) / 52;
+			if (x1 > width - ActionBarWidth && x1 < width)
+			{
+				switch (ClickedItemOrder)
+				{
+				case ITMA_Edit:		return EDIT_Label;
+				case ITMA_Move:		return MOVE;
+				case ITMA_MDel:		return MDEL;
+				case ITMA_Save:		return SAVE;
+				case ITMA_Undo:		return UNDO;
+				case ITMA_Redo:		return REDO;
+				case ITMA_Copy:		return ADD_COPY;
+				case ITMA_Cut:		return ADD_CUT;
+				case ITMA_Paste:	return ADD_PASTE;
+				case ITMA_Delete:	return DEL;
+				default:			return DSN_TOOL;
+				}
+			}
+		}
 		//[3] User clicks on the status bar
 		return STATUS_BAR;
+	}
 	}
 	else	//Application is in Simulation mode
 	{

@@ -7,5 +7,5 @@ public:
 	Switch(GraphicsInfo* r_GfxInfo);
 	virtual void Operate();	//Calculates the volt on both terminals
 	virtual void Draw(UI*);	//Draws the Switch
-
+	void load(int id, string, double); //Load the switch 
 };

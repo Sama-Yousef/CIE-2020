@@ -36,6 +36,7 @@ public:
 	//Gets a pointer to UI Object
 	UI* GetUI();
 	
+	void load(string*, double*, Component**, Component**);     //load the	Circuit. 
 
 	//Adds a new component to the list of components
 	void AddComponent(Component* pComp);

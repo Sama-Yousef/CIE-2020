@@ -14,3 +14,10 @@ void Battery::Operate()
 {
 
 }
+void Battery::load(int id, string LABELi, double VALUE)    //load the battery
+{
+	ID = id;               //id for the battery
+	m_Label = LABELi;      //new label for the battery 
+	resistance = VALUE;    // the internal resistance of the battery
+
+}

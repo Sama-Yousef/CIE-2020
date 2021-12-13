@@ -41,9 +41,9 @@ class UI
 		ITM_RES,	//Resistor item in menu
 		ITM_BAT,
 		ITM_SWI,
-		ITM_EXIT,		//Exit item
+		ITM_EXIT,	//Exit item
 		//TODO: Add more items names here
-	
+		ITM_SIM,
 		ITM_DSN_CNT		//no. of design menu items ==> This should be the last line in this enum
 	
 	};

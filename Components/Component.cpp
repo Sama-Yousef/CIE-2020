@@ -15,4 +15,6 @@ Component::Component()
 
 Component::~Component()
 {}
-
+void Component::load(int, string, double)   // load function
+{
+}

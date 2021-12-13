@@ -153,6 +153,15 @@
     <ClCompile Include="Components\Switch.cpp">
       <Filter>Components</Filter>
     </ClCompile>
+    <ClCompile Include="Actions\ActionLoad.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\ActionEdit.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\Edit.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Components\Component.h">
@@ -242,6 +251,15 @@
       <Filter>Actions</Filter>
     </ClInclude>
     <ClInclude Include="Components\Switch.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\ActionLoad.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\ActionEdit.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\Edit.h">
       <Filter>Components</Filter>
     </ClInclude>
   </ItemGroup>
